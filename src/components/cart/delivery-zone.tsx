@@ -56,7 +56,7 @@ function DeliveryZone(): React.ReactElement {
           <p>Delivered on: {deliveryDays}</p>
           <p>
             Please place your order before{' '}
-            {zone === 'Port Macquarie' ? '10am' : '10am'} the day prior to
+            {zone === 'Port Macquarie' ? 'midday' : 'midday'} the day prior to
             delivery.
           </p>
         </Button>
