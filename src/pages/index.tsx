@@ -16,6 +16,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useNextSanityImage } from 'next-sanity-image';
 import { NextSeo } from 'next-seo';
+import Head from 'next/head';
 import * as React from 'react';
 import siteSettings from 'studio/schemas/siteSettings';
 
@@ -31,6 +32,12 @@ function HomePage({
   return (
     <>
       <NextSeo title="Home" />
+      <Head>
+        <meta
+          name="facebook-domain-verification"
+          content="1fsgqco3q501al227i4uktb9ixbmg5"
+        />
+      </Head>
       <h1 className="sr-only">{siteSettings.title}</h1>
       <Carousel slides={carouselSlides} />
       <div className="grid gap-12 pb-12 lg:grid-cols-2">
