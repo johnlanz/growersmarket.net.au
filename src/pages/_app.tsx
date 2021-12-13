@@ -33,11 +33,12 @@ function App({ Component, pageProps }: AppProps) {
   });
 
   const router = useRouter();
+  const isBrowser = typeof window !== 'undefined';
   React.useEffect(() => {
-    window.fbq('track', 'PageView');
+    isBrowser && window.fbq('track', 'PageView');
     const handleRouteChange = (url) => {
       gtag.pageview(url);
-      window.fbq('track', 'PageView');
+      isBrowser && window.fbq('track', 'PageView');
     };
     router.events.on('routeChangeComplete', handleRouteChange);
     return () => {
