@@ -22,6 +22,7 @@ import siteSettings from '../data/site-settings.json';
 LogRocket.init('uelrcs/growers-market');
 setupLogRocketReact(LogRocket);
 
+declare const window: any;
 function App({ Component, pageProps }: AppProps) {
   Sentry.init({
     dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
@@ -33,12 +34,12 @@ function App({ Component, pageProps }: AppProps) {
   });
 
   const router = useRouter();
-  const isBrowser = typeof window !== 'undefined';
+  // const isBrowser = typeof window !== 'undefined';
   React.useEffect(() => {
-    if (isBrowser) window.fbq('track', 'PageView');
+    window.fbq('track', 'PageView');
     const handleRouteChange = (url) => {
       gtag.pageview(url);
-      if (isBrowser) window.fbq('track', 'PageView');
+      window.fbq('track', 'PageView');
     };
     router.events.on('routeChangeComplete', handleRouteChange);
     return () => {
