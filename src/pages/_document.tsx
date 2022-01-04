@@ -37,7 +37,7 @@ class AppDocument extends Document {
             }}
           />
           {/* Userback Feedback Widget */}
-          <script
+          {/* <script
             dangerouslySetInnerHTML={{
               __html: stripIndent(`
                 window.Userback = window.Userback || {};
@@ -49,7 +49,7 @@ class AppDocument extends Document {
                 })(document);
               `),
             }}
-          />
+          /> */}
         </Head>
         <body>
           <Main />
