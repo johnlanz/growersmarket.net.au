@@ -9,6 +9,7 @@ import { TopSellingProducts } from '@components/top-selling-products';
 import { getAllSlides, ISlide } from '@lib/get-all-slides';
 import { getBottomCta, IBottomCta } from '@lib/get-bottom-cta';
 import { getProduct, IProduct } from '@lib/get-product';
+import { getAllProducts } from '@lib/get-products';
 import { getTopSelling, ITopSellingProducts } from '@lib/get-top-selling';
 import { useAddToCart } from '@lib/hooks/use-add-to-cart';
 import Image from 'next/image';
@@ -214,13 +215,24 @@ function ProductPage({
   );
 }
 
+async function getStaticPaths() {
+  const products = await getAllProducts();
+  return {
+    paths: products.map(({ node }) => ({
+      params: {
+        handle: node.handle,
+      },
+    })),
+    fallback: false,
+  };
+}
+
 interface IParams {
   params: {
     handle: string;
   };
 }
-
-async function getServerSideProps({ params }: IParams) {
+async function getStaticProps({ params }: IParams) {
   const product: IProduct = await getProduct({
     handle: params.handle,
   });
@@ -248,7 +260,8 @@ async function getServerSideProps({ params }: IParams) {
       product,
       topSelling,
     },
+    revalidate: 60,
   };
 }
 
-export { ProductPage as default, getServerSideProps };
+export { ProductPage as default, getStaticPaths, getStaticProps };

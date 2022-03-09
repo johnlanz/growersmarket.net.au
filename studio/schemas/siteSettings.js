@@ -58,6 +58,11 @@ export default {
       name: 'deliverySchedule',
       type: 'deliverySchedule',
     },
+    {
+      title: 'Pickup Schedule',
+      name: 'pickupSchedule',
+      type: 'pickupSchedule',
+    },
   ],
   preview: {
     select: {

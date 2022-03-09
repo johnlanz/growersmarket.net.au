@@ -14,6 +14,7 @@ import cta from './cta';
 import deliveryDays from './deliveryDays';
 import deliveryLocation from './deliveryLocation';
 import deliverySchedule from './deliverySchedule';
+import pickupSchedule from './pickupSchedule';
 import externalPage from './externalPage';
 import footerNavSection from './footerNavSection';
 import googleMaps from './googleMaps';
@@ -50,6 +51,7 @@ export default createSchema({
     deliveryDays,
     deliveryLocation,
     deliverySchedule,
+    pickupSchedule,
     externalPage,
     footerNavSection,
     googleMaps,

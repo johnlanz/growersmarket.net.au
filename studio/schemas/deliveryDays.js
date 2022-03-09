@@ -10,7 +10,7 @@ export default {
       options: {
         layout: 'radio',
         direction: 'horizontal',
-        list: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        list: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
       },
       validation: (Rule) => Rule.required().error('Please select a day'),
     },
