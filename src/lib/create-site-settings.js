@@ -63,6 +63,16 @@ const SANITY_DATA = gql`
           dates
         }
       }
+      pickupSchedule {
+        pickupDays {
+          _key
+          day
+        }
+        pickupDatesClosed {
+          _key
+          dates
+        }
+      }
     }
   }
 `;

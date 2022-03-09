@@ -38,7 +38,20 @@ interface IDay {
   index: number;
 }
 
-function isDayDisabled(location, dayOfWeek, date) {
+function isDayDisabled(location, dayOfWeek, date, deliveryMethod) {
+  if (deliveryMethod === 'Pickup') {
+    if (
+      siteSettings.pickupSchedule.pickupDays.findIndex(
+        (e) => e.day === dayOfWeek
+      ) !== -1
+    ) {
+      return siteSettings.pickupSchedule.pickupDatesClosed.dates?.includes(
+        date
+      );
+    }
+    return true;
+  }
+
   const index = siteSettings.deliverySchedule.deliveryLocations.findIndex(
     (e) => e.location === location
   );
@@ -61,7 +74,7 @@ function isDayDisabled(location, dayOfWeek, date) {
 function Day({ index }: IDay) {
   const { state, setState } = useCartContext();
 
-  const { deliveryZone } = state;
+  const { deliveryZone, deliveryMethod } = state;
 
   const isAfterTwelve = dayjs().isAfter(dayjs().hour(12).minute(0));
 
@@ -76,13 +89,23 @@ function Day({ index }: IDay) {
 
   const IS_DISABLED = React.useMemo(
     () => ({
-      'Port Macquarie': isDayDisabled('Port Macquarie', dayOfWeek, date),
-      Wauchope: isDayDisabled('Wauchope', dayOfWeek, date),
-      Laurieton: isDayDisabled('Laurieton', dayOfWeek, date),
-      Kempsey: isDayDisabled('Kempsey', dayOfWeek, date),
-      'Lord Howe Island': isDayDisabled('Lord Howe Island', dayOfWeek, date),
+      'Port Macquarie': isDayDisabled(
+        'Port Macquarie',
+        dayOfWeek,
+        date,
+        deliveryMethod
+      ),
+      Wauchope: isDayDisabled('Wauchope', dayOfWeek, date, deliveryMethod),
+      Laurieton: isDayDisabled('Laurieton', dayOfWeek, date, deliveryMethod),
+      Kempsey: isDayDisabled('Kempsey', dayOfWeek, date, deliveryMethod),
+      'Lord Howe Island': isDayDisabled(
+        'Lord Howe Island',
+        dayOfWeek,
+        date,
+        deliveryMethod
+      ),
     }),
-    [date, dayOfWeek]
+    [date, dayOfWeek, deliveryMethod]
   );
 
   const propertyName = 'deliveryDate';
@@ -106,9 +129,9 @@ function Day({ index }: IDay) {
   }
 
   // Don't load weekends
-  if (isWeekend) {
-    return null;
-  }
+  // if (isWeekend) {
+  //   return null;
+  // }
 
   // Don't load next day if time is pass 10am
   if (isAfterTwelve && nextDay === dayOfWeek) {
