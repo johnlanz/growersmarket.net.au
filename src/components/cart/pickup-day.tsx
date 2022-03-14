@@ -133,6 +133,12 @@ function Day({ index }: IDay) {
   //   return null;
   // }
 
+  if (
+    deliveryMethod === 'Pickup' &&
+    isDayDisabled('Port Macquarie', dayOfWeek, date, deliveryMethod)
+  )
+    return null;
+
   // Don't load next day if time is pass 10am
   if (isAfterTwelve && nextDay === dayOfWeek) {
     return null;
@@ -151,6 +157,7 @@ function Day({ index }: IDay) {
       [propertyName]: date,
     }));
 
+  console.log('Delivery zone = ' + deliveryZone);
   return (
     <Button
       key={date}
