@@ -21,7 +21,7 @@ const deliveryZones = [
   },
   {
     zone: 'Kempsey',
-    heading: 'Kempsey / Crescent Head',
+    heading: 'Kempsey / Telegraph Point / Crescent Head / South West Rocks',
     deliveryDays: 'Friday.',
   },
   {
