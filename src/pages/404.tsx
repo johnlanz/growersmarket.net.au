@@ -8,7 +8,7 @@ function NotFoundPage() {
       <NextSeo title="404: Page Not Found" />
       <article className="py-48 space-y-6 text-center">
         <h1 className="text-2xl font-bold">404: Page not found</h1>
-        <p>Sorry! The page you were looking for could not be found.</p>
+        <p>Sorry! The page you were looking for could not be found. </p>
         <p>
           <Link href="/">
             <a className="inline-flex bg-white border cta text-green-dark border-green-dark">
