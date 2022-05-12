@@ -28,6 +28,12 @@ function ConfirmOrder(): React.ReactElement {
     if (state.deliveryMethod === 'Pickup' && state.pickupTime === '') {
       setState((prevState) => ({ ...prevState, step: 2 }));
     }
+    if (state.deliveryMethod === 'Delivery' && Number(cartTotal) < 40) {
+      alert(
+        'Please note that a minimum spend of $40 is required to select the Delivery option. Thank you.'
+      );
+      setState((prevState) => ({ ...prevState, step: 2 }));
+    }
 
     if (
       state.deliveryMethod === 'Delivery' &&
