@@ -17,7 +17,7 @@ function Delivery(): React.ReactElement {
   const cartTotal = Number(cart?.totalPrice || 0).toFixed(2);
 
   React.useEffect(() => {
-    if (Number(cartTotal) < 15) {
+    if (Number(cartTotal) < 0) {
       setState((prevState) => ({ ...prevState, step: 1 }));
     }
   }, [cartTotal, setState]);

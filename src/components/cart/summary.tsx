@@ -25,12 +25,12 @@ function Summary(): React.ReactElement {
           <dt className="font-bold">Shipping:</dt>
           <dd>Calculated at checkout</dd>
         </div>
-        {Number(cartTotal) < 15 ? (
+        {/* {Number(cartTotal) < 15 ? (
           <div className="flex justify-between text-red">
             <dt className="font-bold">Warning:</dt>
             <dd>Minimum order amount is $15.00</dd>
           </div>
-        ) : null}
+        ) : null} */}
       </dl>
       <div className="flex justify-between mt-16">
         <Link href="/">
@@ -51,7 +51,7 @@ function Summary(): React.ReactElement {
             Continue Shopping
           </a>
         </Link>
-        {Number(cartTotal) >= 15 ? (
+        {Number(cartTotal) >= 0 ? (
           <button
             type="button"
             onClick={nextStep}

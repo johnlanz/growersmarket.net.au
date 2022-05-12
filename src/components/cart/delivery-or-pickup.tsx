@@ -10,7 +10,7 @@ const deliveryMethods = [
   {
     title: 'Pickup',
     icon: PickupIcon,
-    minSpend: '15',
+    minSpend: '0',
   },
   {
     title: 'Delivery',
