@@ -4,6 +4,7 @@ import { useNextSanityImage } from 'next-sanity-image';
 import { NextSeo } from 'next-seo';
 import Head from 'next/head';
 import * as React from 'react';
+import router from 'next/router';
 
 function Login() {
   return (
@@ -16,46 +17,14 @@ function Login() {
         <h2 className="pt-8 pb-4 font-bold text-lg">Log In</h2>
         <input
           type="email"
-          className="
-        form-control
-        block
-        w-full
-        px-3
-        py-1.5
-        text-base
-        font-bold
-        text-gray-dark
-        bg-white bg-clip-padding
-        border border-solid border-black
-        rounded-lg
-        transition
-        ease-in-out
-        m-0
-        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
-      "
+          className="form-control block w-full px-3 mt-6 text-base font-bold text-gray-dark bg-white bg-clip-padding border border-solid border-black rounded-lg transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
           id="exampleEmail0"
           placeholder="Email"
         />
 
         <input
           type="password"
-          className="
-        form-control
-        block
-        w-full
-        px-3
-        mt-6
-        text-base
-        font-bold
-        text-gray-dark
-        bg-white bg-clip-padding
-        border border-solid border-black
-        rounded-lg
-        transition
-        ease-in-out
-        m-0
-        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
-      "
+          className="form-control block w-full px-3 mt-6 text-base font-bold text-gray-dark bg-white bg-clip-padding border border-solid border-black rounded-lg transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
           id="examplePassword0"
           placeholder="Password"
         />
@@ -75,6 +44,7 @@ function Login() {
         <button
           type="button"
           className="mb-2 w-full inline-block mt-4 px-14 py-2.5 bg-green-dark text-white font-bold text-lg leading-normal  rounded-full shadow-md hover:bg-green-dark hover:shadow-lg focus:bg-green-dark focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+          onClick={() => router.push('/users/signup')}
         >
           Sign Up
         </button>
