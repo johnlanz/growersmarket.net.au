@@ -46,6 +46,10 @@ function Signup() {
       },
     });
 
+    if (data.customerCreate.customerUserErrors){
+      alert(data.customerCreate.customerUserErrors[0].message)
+    }
+
     console.log(data);
   };
   return (
