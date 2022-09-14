@@ -3,12 +3,13 @@ import { DialogContent, DialogOverlay } from '@reach/dialog';
 import Link from 'next/link';
 import * as React from 'react';
 import { HiOutlineSearch } from 'react-icons/hi';
-
+import router from 'next/router';
 import { Container } from './container';
 import { HorizontalPadding } from './horizontal-padding';
 import { Searchbar } from './search-bar';
 import { CartIcon } from './vectors/cart';
 import { Logo } from './vectors/logo';
+import Image from 'next/image';
 
 function Shopbar() {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -54,6 +55,11 @@ function Shopbar() {
               <div className="hidden sm:block">
                 <Searchbar />
               </div>
+              <Link href="/users/login">
+                <a>
+                  <Image src="/login-icon.png" width={42} height={42} alt="" />
+                </a>
+              </Link>
               <Link href="/cart">
                 <a className="relative flex flex-col items-center text-xs leading-none text-center sm:flex-row sm:space-x-2">
                   <CartIcon className="w-7 h-7" />
