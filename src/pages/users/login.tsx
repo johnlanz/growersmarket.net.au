@@ -1,52 +1,34 @@
 import Image from 'next/image';
-import Link from 'next/link';
-import { useNextSanityImage } from 'next-sanity-image';
-import { NextSeo } from 'next-seo';
-import Head from 'next/head';
 import * as React from 'react';
 import router from 'next/router';
-import { gql } from '@apollo/client';
-import { apolloClient } from '@lib/apollo-client';
+import Loading from '@components/customer/Loading';
+import { CustomerLogin } from '@lib/customer/login';
 
 function Login() {
+  const [showLoading, setShowLoading] = React.useState(false);
   const loginUserSubmit = async (event) => {
     event.preventDefault();
 
+    setShowLoading(true);
     const email = event.target.email.value;
     const password = event.target.password.value;
 
-    console.log(email);
-    console.log(password);
-    const LOGIN_MUTATION = gql`
-      mutation customerAccessTokenCreate($input: CustomerAccessTokenCreateInput!) {
-        customerAccessTokenCreate(input: $input) {
-          customerAccessToken {
-            accessToken,
-            expiresAt
-          }
-          customerUserErrors {
-            field
-            message
-            code
-          }
-        }
-      }
-    `;
-
-    const { data } = await apolloClient.mutate({
-      mutation: LOGIN_MUTATION,
-      variables: {
-        input: {
-          email: email,
-          password: password,
-        },
-      },
+    const data: any = await CustomerLogin({
+      email: email,
+      password: password,
     });
 
     console.log(data);
+    if(data.success) {
+      router.push('/users/my-account')
+    } else {
+      alert(data.message)
+    }
+    setShowLoading(false);
   };
   return (
     <div className="flex justify-center items-center my-28 ">
+      <Loading showLoading={showLoading} />
       <div className=" w-1/2">
         <div className="flex item-center ">
           <Image src="/login-icon.png" width={72} height={72} alt="" />
