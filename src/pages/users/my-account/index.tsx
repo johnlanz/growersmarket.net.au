@@ -33,10 +33,12 @@ function MyAccount() {
           <div className="flex item-center justify-between ">
             <h2 className="p-4 font-bold text-2xl">Personal Details</h2>
             <div className="flex item-center h-4 ">
-              <div className="flex item-center ">
-                <Image src="/icon.png" width={16} height={16} alt="" />
-                <h2 className="pl-2 font-bold text-xs">Edit Details</h2>
-              </div>
+              <Link href="/users/my-account/edit">
+                <a className="flex items-center">
+                  <Image src="/icon.png" width={16} height={16} alt="" />
+                  <span className="pl-2 font-bold text-xs">Edit Details</span>
+                </a>
+              </Link>
             </div>
           </div>
           {customer && (
@@ -44,7 +46,9 @@ function MyAccount() {
               <div className="px-2 flex item-center h-4 ">
                 <div className="flex item-center ">
                   <h2 className=" pl-2 font-bold text-base">Full Name</h2>
-                  <h2 className=" pl-2 text-base">{customer.firstName} {customer.lastName}</h2>
+                  <h2 className=" pl-2 text-base">
+                    {customer.firstName} {customer.lastName}
+                  </h2>
                 </div>
               </div>
               <div className="px-2 py-2.5 flex item-center h-4 ">
@@ -72,10 +76,12 @@ function MyAccount() {
           <div className="flex item-center justify-between ">
             <h2 className="p-4 font-bold text-2xl">Delivery Preference</h2>
             <div className="flex item-center h-4 ">
-              <div className="flex item-center ">
-                <Image src="/icon.png" width={16} height={16} alt="" />
-                <h2 className="pl-2 font-bold text-xs">Edit Details</h2>
-              </div>
+              <Link href="/users/my-account/edit">
+                <a className="flex items-center">
+                  <Image src="/icon.png" width={16} height={16} alt="" />
+                  <span className="pl-2 font-bold text-xs">Edit Details</span>
+                </a>
+              </Link>
             </div>
           </div>
           <div className="px-2 flex item-center h-4 ">
@@ -85,8 +91,10 @@ function MyAccount() {
               </p>
               {customer && (
                 <p className=" pl-2 text-base">
-                  {customer.defaultAddress.address1} {customer.defaultAddress.address2},  
-                  {customer.defaultAddress.city}, {customer.defaultAddress.provinceCode}, 
+                  {customer.defaultAddress.address1}{' '}
+                  {customer.defaultAddress.address2},
+                  {customer.defaultAddress.city},{' '}
+                  {customer.defaultAddress.provinceCode},
                   {customer.defaultAddress.zip}
                 </p>
               )}

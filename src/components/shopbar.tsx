@@ -10,9 +10,11 @@ import { Searchbar } from './search-bar';
 import { CartIcon } from './vectors/cart';
 import { Logo } from './vectors/logo';
 import Image from 'next/image';
+import { GetUserToken } from '@lib/customer/login';
 
 function Shopbar() {
   const [isOpen, setIsOpen] = React.useState(false);
+  const [token, setToken] = React.useState(null);
 
   const toggle = () => setIsOpen((prev) => !prev);
 
@@ -27,6 +29,11 @@ function Shopbar() {
       setTotal(cart.totalPrice);
     }
   }, [cart?.totalPrice]);
+
+  React.useEffect(() => {
+    const getToken: any = GetUserToken();
+    setToken(getToken.token.accessToken)
+  }, []);
 
   return (
     <div className="relative z-20 font-bold bg-white">
@@ -55,7 +62,7 @@ function Shopbar() {
               <div className="hidden sm:block">
                 <Searchbar />
               </div>
-              <Link href="/users/login">
+              <Link href={token ? `/users/my-account` : `/users/login`}>
                 <a>
                   <Image src="/login-icon.png" width={42} height={42} alt="" />
                 </a>
