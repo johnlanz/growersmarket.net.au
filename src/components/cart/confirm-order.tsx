@@ -1,4 +1,5 @@
 import { useCartContext } from '@lib/cart-context';
+import { customerCheckout } from '@lib/customer/customerCheckout';
 import { useCheckoutUrl } from '@lib/hooks/use-checkout-url';
 import { useShopifyContext } from '@lib/shopify-context';
 import dayjs from 'dayjs';
@@ -142,14 +143,15 @@ function ConfirmOrder(): React.ReactElement {
         checkoutId,
         input
       );
-
       setCart(newCheckout);
+      const cc = await customerCheckout(checkoutId)
     } catch (error) {
       // eslint-disable-next-line no-console
       console.error(error);
       setIsLoading(false);
     } finally {
       Router.push(checkoutUrl);
+      //window.open(checkoutUrl, '_ blank');
     }
   };
 
